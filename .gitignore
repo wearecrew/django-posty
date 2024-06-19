@@ -1,0 +1,5 @@
+*.egg-info
+/.venv
+*.pyc
+*.sqlite3
+.DS_Store

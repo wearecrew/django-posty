@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+  </head>
+  <body style="margin: 0; display: flex; flex-direction: column; min-height: 100vh;">
+    <iframe
+      src="{% url preview_url_name object_id=obj.id %}?mode={{ preview_mode }}"
+      style="width: 100%; border: none; flex: 1;"
+    ></iframe>
+    {% if obj.preview_modes %}
+      <form
+        action="{% url preview_url_launcher_name object_id=obj.id %}"
+        method="GET"
+        style="padding: 1rem; display: flex; background-color: #f0f0f0; gap: 0.5rem; align-items: center; justify-content: center;"
+      >
+        <select name="mode" style="font-size: 2rem; min-width: 8rem" onchange="this.form.submit()">
+          {% for mode in obj.preview_modes %}
+            <option value="{{ mode }}" {% if mode == preview_mode %}selected{% endif %}>{{ mode }}</option>
+          {% endfor %}
+        </select>
+      </form>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,2 @@
+TEXT = "Text"
+HTML = "HTML"
